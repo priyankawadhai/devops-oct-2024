@@ -3,18 +3,29 @@
 # that adds support for quickly building REST (REpresentational State Transfer) APIs
 # Easy to get started with REST API (lacks advanced functionality from full-fledged framework like Django)
 
-# perform these steps on VSC terminal
-# ls -la .venv/lib/python3.11/site-packages/
+# virtualenv avoids the need to install Python packages globally. 
+# When a virtualenv is active, pip will install packages within the environment
+# which flask (this command gives you flask as global package)
+
+# perform these steps on VSC terminal to install venv
+
 # rm -rf venv
 # sudo apt install python3.11-venv
 # python3.11 -m venv .venv
 # python3 -m pip install --upgrade pip
 # source .venv/bin/activate
 # you should see (.venv) prepended on VSC terminal
-# if you want to come out of .vnev on ubuntu cli
-# deactivate
+
 # pip install --upgrade pip
 # pip install -r requirements.txt
+# which flask (this time it will give path from local environment, which is .venv)
+
+# Ctrl + Shift + P
+# Python: Select interpreter
+# .venv/bin/python3.11
+
+# if you want to come out of .vnev on ubuntu cli
+# deactivate
 
 # import flask
 
@@ -31,6 +42,16 @@ app = Flask(__name__)
 
 # create get greeting api and return message and http status code
 # define route at which this API would be called
+
+fruits = {"oranges":100,"banana":200}
+
+@app.get("/greetings")
+def greeting():
+    return "Welcome to DevOps session"
+
+@app.get("/fruits")
+def get_fruits():
+    return fruits
 
 
 # run python app  with flask run
